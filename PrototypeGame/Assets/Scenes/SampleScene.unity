@@ -1193,6 +1193,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2606120288031626757, guid: 7bda7ebba24c31a4db0bfeeebcad2a9a, type: 3}
+      propertyPath: mouseSpeed
+      value: 200
+      objectReference: {fileID: 0}
     - target: {fileID: 2606120288445566379, guid: 7bda7ebba24c31a4db0bfeeebcad2a9a, type: 3}
       propertyPath: m_Name
       value: Player
