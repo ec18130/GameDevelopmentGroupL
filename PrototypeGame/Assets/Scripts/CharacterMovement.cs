@@ -5,7 +5,7 @@ using UnityEngine;
 public class CharacterMovement : MonoBehaviour
 {
     public CharacterController controller;
-    public float speed = 1.0f;
+    public float speed;
 
     public Vector3 velocity;
     public float gravity = -9.81f;
@@ -14,11 +14,14 @@ public class CharacterMovement : MonoBehaviour
     public float floorDistance = 0.4f;
     public LayerMask floorMask;
     bool isGrounded;
+    public GameObject Light;
+    bool lightState;
 
 
     // Start is called before the first frame update
     void Start()
     {
+        lightState = false;
     }
 
     // Update is called once per frame
@@ -40,6 +43,20 @@ public class CharacterMovement : MonoBehaviour
         controller.Move(movement * speed * Time.deltaTime);
         velocity.y += gravity * Time.deltaTime;
         controller.Move(velocity * Time.deltaTime);
+
+        if (Input.GetKeyDown(KeyCode.F) && lightState == false)
+        {
+            Light.SetActive(true);
+            lightState = true;
+            Debug.Log("Flash Light on!");
+        }
+        else if (Input.GetKeyDown(KeyCode.F) && lightState != false)
+        {
+            Light.SetActive(false);
+            lightState = false;
+            Debug.Log("Flash Light off!");
+        }
     }
+
 
 }
