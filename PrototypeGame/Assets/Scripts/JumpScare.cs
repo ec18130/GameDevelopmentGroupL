@@ -5,6 +5,8 @@ using UnityEngine;
 public class JumpScare : MonoBehaviour
 {
     public GameObject jumpscare;
+    private bool opened = false;
+    private Animator anim;
     // Start is called before the first frame update
     void Start()
     {
@@ -16,6 +18,8 @@ public class JumpScare : MonoBehaviour
         if (player.tag == "Player")
         {
             StartCoroutine(DestroyObject());
+            anim = jumpscare.transform.GetComponentInParent<Animator>();
+            opened = !opened;
         }
     }
 
@@ -23,7 +27,7 @@ public class JumpScare : MonoBehaviour
     {
         yield return new WaitForSeconds(0.5f);
         jumpscare.SetActive(true);
-        jumpscare.GetComponent<Rigidbody>().AddForce(Vector3.right * 600f);
+        jumpscare.GetComponent<Rigidbody>().AddForce(Vector3.right * 100f);
         yield return new WaitForSeconds(2.5f);
         Destroy(jumpscare);
         Destroy(gameObject);
