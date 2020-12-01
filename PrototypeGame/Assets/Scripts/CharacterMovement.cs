@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class CharacterMovement : MonoBehaviour
 {
@@ -16,12 +17,14 @@ public class CharacterMovement : MonoBehaviour
     bool isGrounded;
     public GameObject Light;
     bool lightState;
-
+   
 
     // Start is called before the first frame update
     void Start()
     {
         lightState = false;
+      
+        
     }
 
     // Update is called once per frame
@@ -56,7 +59,8 @@ public class CharacterMovement : MonoBehaviour
             lightState = false;
             Debug.Log("Flash Light off!");
         }
+
     }
 
-
+    
 }
