@@ -9,6 +9,9 @@ TagManager:
   - PickUpObject
   - winText
   - scoreText
+  - Notes
+  - Fire
+  - Key
   layers:
   - Default
   - TransparentFX
