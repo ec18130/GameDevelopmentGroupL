@@ -10,8 +10,11 @@ TagManager:
   - winText
   - scoreText
   - Notes
-  - Fire
   - Key
+  - Elevator
+  - ElevatorUp
+  - ElevatorDown
+  - ElevatorLock
   layers:
   - Default
   - TransparentFX
