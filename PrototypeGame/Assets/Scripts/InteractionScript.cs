@@ -16,7 +16,7 @@ public class InteractionScript : MonoBehaviour
     private Animator anim;
     public Animator[] lift;
     public Text lockText;
-    //private AudioSource source;
+    private AudioSource source;
 
 
     void Start()
@@ -46,6 +46,7 @@ public class InteractionScript : MonoBehaviour
                 if (hit.collider.tag == door[i].tag)
                 {
                     doorScript[i] = door[i].GetComponent<DoorScript>();
+                    source = GetComponentInParent<AudioSource>();
                     if (doorScript[i].locked == true && doorScript[i].keyunlocked == true)
                     {
                         //This line will get the Animator from  Parent of the door that was hit by the raycast.
@@ -64,6 +65,7 @@ public class InteractionScript : MonoBehaviour
                         isPressed = !isPressed;
                         Debug.Log("DOOR OPNENED!");
                         //source.Play();
+                       
 
                     }
                     else if (doorScript[i].locked == false && doorScript[i].keyunlocked == false)
@@ -83,7 +85,8 @@ public class InteractionScript : MonoBehaviour
                         Debug.Log("DOOR IS LOCKED!");
                         //lockText.text = "Door is locked";
                         //source = GetComponentInParent<AudioSource>();
-                       // source.Play();
+                        //source.Play();
+                        FindObjectOfType<AudioManager>().Play("DoorOpen");
                     }
                 }
             }
