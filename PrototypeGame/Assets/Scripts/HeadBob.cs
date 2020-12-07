@@ -9,12 +9,14 @@ public class HeadBob : MonoBehaviour
     private bool moving;
     private bool left;
     private bool right;
-
+    private AudioSource source;
+    //private AudioSource source2;
     // Start is called before the first frame update
     void Start()
     {
         left = true;
         right = false;
+        source = GetComponent<AudioSource>();
     }
 
     void CameraAnimation()
@@ -28,6 +30,7 @@ public class HeadBob : MonoBehaviour
                     if (!headbob.isPlaying)
                     {
                         headbob.Play("walkLeft");
+                        source.Play();
                         left = false;
                         right = true;
                     }
@@ -38,6 +41,7 @@ public class HeadBob : MonoBehaviour
                     if (!headbob.isPlaying)
                     {
                         headbob.Play("walkRight");
+                        source.Play();
                         right = false;
                         left = true;
                     }

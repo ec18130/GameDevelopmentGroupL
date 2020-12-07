@@ -15,11 +15,14 @@ public class InteractionScript : MonoBehaviour
     private bool isPressed;
     private Animator anim;
     public Animator[] lift;
+    public Text lockText;
+    //private AudioSource source;
 
 
     void Start()
     {
-
+        
+        //lockText.text = "";
     }
 
     void Update()
@@ -57,9 +60,11 @@ public class InteractionScript : MonoBehaviour
                         {
                             Destroy(block);
                         }
-
+                        //source = GetComponentInParent<AudioSource>();
                         isPressed = !isPressed;
                         Debug.Log("DOOR OPNENED!");
+                        //source.Play();
+
                     }
                     else if (doorScript[i].locked == false && doorScript[i].keyunlocked == false)
                     {
@@ -70,10 +75,15 @@ public class InteractionScript : MonoBehaviour
 
                         //This line will set the bool true so it will play the animation.
                         anim.SetBool("Opened", opened);
+                        //source = GetComponentInParent<AudioSource>();
+                        //source.Play();
                     }
                     else if (doorScript[i].locked == true && doorScript[i].keyunlocked == false)
                     {
                         Debug.Log("DOOR IS LOCKED!");
+                        //lockText.text = "Door is locked";
+                        //source = GetComponentInParent<AudioSource>();
+                       // source.Play();
                     }
                 }
             }
