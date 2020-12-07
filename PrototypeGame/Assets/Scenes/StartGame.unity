@@ -11215,6 +11215,7 @@ MonoBehaviour:
   keyunlocked: 0
   locked: 1
   lockText: {fileID: 0}
+  unlockTextObj: {fileID: 444048439}
 --- !u!82 &267423997
 AudioSource:
   m_ObjectHideFlags: 0
@@ -17762,6 +17763,85 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7c5fce515cae1674c8d80f6ce84cda0f, type: 3}
+--- !u!1 &444048439
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 444048440}
+  - component: {fileID: 444048442}
+  - component: {fileID: 444048441}
+  m_Layer: 5
+  m_Name: UnlockText
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &444048440
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 444048439}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 2033756898}
+  m_RootOrder: 5
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 160, y: 30}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &444048441
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 444048439}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5f7201a12d95ffc409449d95f23cf332, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_FontData:
+    m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
+    m_FontSize: 25
+    m_FontStyle: 3
+    m_BestFit: 0
+    m_MinSize: 2
+    m_MaxSize: 40
+    m_Alignment: 4
+    m_AlignByGeometry: 0
+    m_RichText: 1
+    m_HorizontalOverflow: 1
+    m_VerticalOverflow: 1
+    m_LineSpacing: 1
+  m_Text: Door is Unlocked!
+--- !u!222 &444048442
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 444048439}
+  m_CullTransparentMesh: 0
 --- !u!4 &444963911 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4094228355867194, guid: ab72fcd772c06c7409950b78272ee29b, type: 3}
@@ -21846,6 +21926,7 @@ MonoBehaviour:
   keyunlocked: 0
   locked: 0
   lockText: {fileID: 2139974568}
+  unlockTextObj: {fileID: 444048439}
 --- !u!95 &549898466
 Animator:
   serializedVersion: 3
@@ -40487,6 +40568,7 @@ MonoBehaviour:
   - {fileID: 1150786062}
   - {fileID: 270484283}
   lockText: {fileID: 2139974568}
+  lockTextObj: {fileID: 2139974566}
 --- !u!114 &1069911836
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -45989,6 +46071,7 @@ MonoBehaviour:
   keyunlocked: 0
   locked: 1
   lockText: {fileID: 0}
+  unlockTextObj: {fileID: 0}
 --- !u!1001 &1194852740
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -48542,6 +48625,7 @@ MonoBehaviour:
   keyunlocked: 0
   locked: 0
   lockText: {fileID: 0}
+  unlockTextObj: {fileID: 0}
 --- !u!95 &1252269334
 Animator:
   serializedVersion: 3
@@ -53205,6 +53289,7 @@ MonoBehaviour:
   keyunlocked: 0
   locked: 1
   lockText: {fileID: 0}
+  unlockTextObj: {fileID: 0}
 --- !u!95 &1360540339
 Animator:
   serializedVersion: 3
@@ -76979,6 +77064,7 @@ RectTransform:
   - {fileID: 1113548150}
   - {fileID: 570681525}
   - {fileID: 2139974567}
+  - {fileID: 444048440}
   m_Father: {fileID: 0}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -81967,13 +82053,13 @@ MonoBehaviour:
     m_BestFit: 0
     m_MinSize: 2
     m_MaxSize: 40
-    m_Alignment: 1
+    m_Alignment: 4
     m_AlignByGeometry: 0
     m_RichText: 1
-    m_HorizontalOverflow: 0
-    m_VerticalOverflow: 0
+    m_HorizontalOverflow: 1
+    m_VerticalOverflow: 1
     m_LineSpacing: 1
-  m_Text: 
+  m_Text: Door is locked!
 --- !u!222 &2139974569
 CanvasRenderer:
   m_ObjectHideFlags: 0

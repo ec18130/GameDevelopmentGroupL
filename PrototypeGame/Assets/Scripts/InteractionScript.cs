@@ -17,12 +17,13 @@ public class InteractionScript : MonoBehaviour
     public Animator[] lift;
     public Text lockText;
     private AudioSource source;
-
+    public GameObject lockTextObj;
 
     void Start()
     {
-        
+
         //lockText.text = "";
+        lockTextObj.SetActive(false);
     }
 
     void Update()
@@ -83,10 +84,10 @@ public class InteractionScript : MonoBehaviour
                     else if (doorScript[i].locked == true && doorScript[i].keyunlocked == false)
                     {
                         Debug.Log("DOOR IS LOCKED!");
-                        //lockText.text = "Door is locked";
-                        //source = GetComponentInParent<AudioSource>();
-                        //source.Play();
+                        lockTextObj.SetActive(true);
+                        
                         FindObjectOfType<AudioManager>().Play("DoorOpen");
+                        StartCoroutine("WaitForSec");
                     }
                 }
             }
@@ -106,5 +107,11 @@ public class InteractionScript : MonoBehaviour
                 }
             }
         }
+    }
+    IEnumerator WaitForSec()
+    {
+        yield return new WaitForSeconds(3);
+        lockTextObj.SetActive(false);
+
     }
 }
