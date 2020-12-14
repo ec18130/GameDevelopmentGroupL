@@ -6,20 +6,18 @@ using UnityEngine.UI;
 public class DoorScript : MonoBehaviour
 {
     public bool keyunlocked = false;
-    public bool locked;
+    public bool locked = true;
     public Text lockText;
     public GameObject unlockTextObj;
 
     void Start()
     {
-
-        
         unlockTextObj.SetActive(false);
     }
 
     void OnCollisionEnter(Collision collision)
     {
-        if (collision.gameObject.CompareTag("Key") && locked == true)
+        if (collision.gameObject.CompareTag("Key") && locked != false)
         {
             //Destroy(this.gameObject);
             Destroy(collision.gameObject);

@@ -15,22 +15,35 @@ public class CharacterMovement : MonoBehaviour
     public float floorDistance = 0.4f;
     public LayerMask floorMask;
     bool isGrounded;
+
+    public InteractionScript interactionScript;
+
     public GameObject Light;
     bool lightState;
-   
+
+    private float maxBattery;
+    private float currentBattery;
+    private int batteries;
+    private float usedBattery;
+
 
 
     // Start is called before the first frame update
     void Start()
     {
         lightState = false;
-      
-        
+        currentBattery = maxBattery;
+        maxBattery = 50 * batteries;
     }
 
-    // Update is called once per frame
     void Update()
     {
+        maxBattery = 50 * batteries;
+        currentBattery = maxBattery;
+
+        print("battery used: " + usedBattery);
+        print("battery current: " + currentBattery);
+
         isGrounded = Physics.CheckSphere(checkFloor.position, floorDistance, floorMask);
 
         if (isGrounded && velocity.y < 0)
@@ -48,20 +61,48 @@ public class CharacterMovement : MonoBehaviour
         velocity.y += gravity * Time.deltaTime;
         controller.Move(velocity * Time.deltaTime);
 
-        if (Input.GetKeyDown(KeyCode.F) && lightState == false)
+        if (Input.GetKeyDown(KeyCode.F))
         {
-            Light.SetActive(true);
-            lightState = true;
-            Debug.Log("Flash Light on!");
+            lightState = !lightState;
+            FindObjectOfType<AudioManager>().Play("FlashlightOn");
         }
-        else if (Input.GetKeyDown(KeyCode.F) && lightState != false)
+
+        if (lightState == true)
+        {
+            Debug.Log("Flash Light on!");
+            Light.SetActive(true);
+
+            if (currentBattery <= 0)
+            {
+                Light.SetActive(false);
+                batteries = 0;
+            }
+            else if (currentBattery > 0)
+            {
+                Light.SetActive(true);
+                currentBattery -= 0.5f * Time.deltaTime;
+                usedBattery += 0.5f * Time.deltaTime;
+            }
+            if (usedBattery >= 50)
+            {
+                batteries -= 1;
+                usedBattery = 0;
+            }
+        }
+        else if (lightState == false)
         {
             Light.SetActive(false);
-            lightState = false;
             Debug.Log("Flash Light off!");
         }
 
+        if (Input.GetKeyDown(KeyCode.E))
+        {
+            interactionScript.Pressed();
+            if (interactionScript.batteryPickup == true)
+            {
+                batteries += 1;
+                interactionScript.batteryPickup = !interactionScript.batteryPickup;
+            }
+        }
     }
-
-    
 }

@@ -10,7 +10,7 @@ public class FlickerLights : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (isOn == false)
+        if (isOn == true)
         {
             StartCoroutine(FlickeringLights());
         }

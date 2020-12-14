@@ -4,22 +4,30 @@ using UnityEngine;
 
 public class JumpScare : MonoBehaviour
 {
+    public Animator[] door;
     public GameObject jumpscare;
-    private bool opened = false;
-    private Animator anim;
+
     // Start is called before the first frame update
     void Start()
     {
-        jumpscare.SetActive(true);
     }
 
     void OnTriggerEnter(Collider player)
     {
-        if (player.tag == "Player")
+        if (player.tag == "Player" && this.gameObject.name == "MainDoorCloseTrigger")
+        {
+            FindObjectOfType<AudioManager>().Play("Doorshut");
+            for (int i = 0; i < door.Length; i++)
+            {
+                door[i].SetBool("Opened", false);
+                Debug.Log("Front door closed");
+            }
+            Destroy(this.gameObject);
+        }
+        else if (player.tag == "Player" && this.gameObject.name == "Test")
         {
             StartCoroutine(DestroyObject());
-            anim = jumpscare.transform.GetComponentInParent<Animator>();
-            opened = !opened;
+            FindObjectOfType<AudioManager>().Play("Hi");
         }
     }
 
@@ -27,9 +35,8 @@ public class JumpScare : MonoBehaviour
     {
         yield return new WaitForSeconds(0.5f);
         jumpscare.SetActive(true);
-        jumpscare.GetComponent<Rigidbody>().AddForce(Vector3.right * 100f);
         yield return new WaitForSeconds(2.5f);
         Destroy(jumpscare);
-        Destroy(gameObject);
+        Destroy(this.gameObject);
     }
 }

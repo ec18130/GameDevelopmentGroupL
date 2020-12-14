@@ -15,6 +15,7 @@ TagManager:
   - ElevatorUp
   - ElevatorDown
   - ElevatorLock
+  - Battery
   layers:
   - Default
   - TransparentFX
