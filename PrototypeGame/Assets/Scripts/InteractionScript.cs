@@ -30,6 +30,8 @@ public class InteractionScript : MonoBehaviour
     public bool batteryPickup;
     public bool delete;
 
+    public TVeffect tvscript;
+
     void Start()
     {
 
@@ -284,6 +286,11 @@ public class InteractionScript : MonoBehaviour
                 FindObjectOfType<AudioManager>().Play("Batteries");
                 batteryPickup = true;
                 Battery_2.SetActive(false);
+            }
+            else if (hit.collider.tag == "TV")
+            {
+                tvscript.tvmaterial.DisableKeyword("_EMISSION");
+                tvscript.tvaudio.Stop();
             }
         }
     }
