@@ -21,7 +21,12 @@ public class InteractionScript : MonoBehaviour
     public GameObject door_2;
     public GameObject door_3;
     public GameObject door_4;
-
+    public GameObject door_5;
+    public GameObject door_6;
+    public GameObject door_7;
+    public GameObject door_8;
+    public GameObject door_9;
+    public GameObject door_10;
 
     DoorScript doorScript;
 
@@ -257,6 +262,305 @@ public class InteractionScript : MonoBehaviour
                 }
             }
 
+            else if (hit.collider.name == door_5.name)
+            {
+                doorScript = door_5.GetComponent<DoorScript>();
+
+                if (doorScript.locked == true && doorScript.keyunlocked == true)
+                {
+                    //This line will get the Animator from  Parent of the door that was hit by the raycast.
+                    anim = hit.transform.GetComponentInParent<Animator>();
+
+                    //This will set the bool the opposite of what it is.
+                    opened = !opened;
+                    //This line will set the bool true so it will play the animation.
+                    anim.SetBool("Opened", opened);
+                    Debug.Log("DOOR OPENED!");
+                    FindObjectOfType<AudioManager>().Play("DoorOpen");
+                    StartCoroutine("WaitForSec");
+                }
+                else if (doorScript.locked == false && doorScript.keyunlocked == false)
+                {
+                    anim = hit.transform.GetComponentInParent<Animator>();
+
+                    //This will set the bool the opposite of what it is.
+                    opened = !opened;
+                    //This line will set the bool true so it will play the animation.
+                    anim.SetBool("Opened", opened);
+                    Debug.Log("DOOR OPNENED!");
+                    FindObjectOfType<AudioManager>().Play("DoorOpen");
+                    StartCoroutine("WaitForSec");
+                }
+
+                else if (doorScript.locked == true && doorScript.keyunlocked == false)
+                {
+                    Debug.Log("DOOR IS LOCKED!");
+                    lockTextObj.SetActive(true);
+                    FindObjectOfType<AudioManager>().Play("DoorOpen");
+                    StartCoroutine("WaitForSec");
+                    anim = hit.transform.GetComponentInParent<Animator>();
+                    anim.SetBool("Opened", false);
+                }
+                else
+                {
+                    Debug.Log("DOOR IS LOCKED!");
+                    lockTextObj.SetActive(true);
+                    FindObjectOfType<AudioManager>().Play("DoorOpen");
+                    StartCoroutine("WaitForSec");
+                    anim = hit.transform.GetComponentInParent<Animator>();
+                    anim.SetBool("Opened", false);
+                }
+            }
+
+            else if (hit.collider.name == door_6.name)
+            {
+                doorScript = door_6.GetComponent<DoorScript>();
+
+                if (doorScript.locked == true && doorScript.keyunlocked == true)
+                {
+                    //This line will get the Animator from  Parent of the door that was hit by the raycast.
+                    anim = hit.transform.GetComponentInParent<Animator>();
+
+                    //This will set the bool the opposite of what it is.
+                    opened = !opened;
+                    //This line will set the bool true so it will play the animation.
+                    anim.SetBool("Opened", opened);
+                    Debug.Log("DOOR OPENED!");
+                    FindObjectOfType<AudioManager>().Play("DoorOpen");
+                    StartCoroutine("WaitForSec");
+                }
+                else if (doorScript.locked == false && doorScript.keyunlocked == false)
+                {
+                    anim = hit.transform.GetComponentInParent<Animator>();
+
+                    //This will set the bool the opposite of what it is.
+                    opened = !opened;
+                    //This line will set the bool true so it will play the animation.
+                    anim.SetBool("Opened", opened);
+                    Debug.Log("DOOR OPNENED!");
+                    FindObjectOfType<AudioManager>().Play("DoorOpen");
+                    StartCoroutine("WaitForSec");
+                }
+
+                else if (doorScript.locked == true && doorScript.keyunlocked == false)
+                {
+                    Debug.Log("DOOR IS LOCKED!");
+                    lockTextObj.SetActive(true);
+                    FindObjectOfType<AudioManager>().Play("DoorOpen");
+                    StartCoroutine("WaitForSec");
+                    anim = hit.transform.GetComponentInParent<Animator>();
+                    anim.SetBool("Opened", false);
+                }
+                else
+                {
+                    Debug.Log("DOOR IS LOCKED!");
+                    lockTextObj.SetActive(true);
+                    FindObjectOfType<AudioManager>().Play("DoorOpen");
+                    StartCoroutine("WaitForSec");
+                    anim = hit.transform.GetComponentInParent<Animator>();
+                    anim.SetBool("Opened", false);
+                }
+            }
+
+            else if (hit.collider.name == door_7.name)
+            {
+                doorScript = door_7.GetComponent<DoorScript>();
+
+                if (doorScript.locked == true && doorScript.keyunlocked == true)
+                {
+                    //This line will get the Animator from  Parent of the door that was hit by the raycast.
+                    anim = hit.transform.GetComponentInParent<Animator>();
+
+                    //This will set the bool the opposite of what it is.
+                    opened = !opened;
+                    //This line will set the bool true so it will play the animation.
+                    anim.SetBool("Opened", opened);
+                    Debug.Log("DOOR OPENED!");
+                    FindObjectOfType<AudioManager>().Play("DoorOpen");
+                    StartCoroutine("WaitForSec");
+                }
+                else if (doorScript.locked == false && doorScript.keyunlocked == false)
+                {
+                    anim = hit.transform.GetComponentInParent<Animator>();
+
+                    //This will set the bool the opposite of what it is.
+                    opened = !opened;
+                    //This line will set the bool true so it will play the animation.
+                    anim.SetBool("Opened", opened);
+                    Debug.Log("DOOR OPNENED!");
+                    FindObjectOfType<AudioManager>().Play("DoorOpen");
+                    StartCoroutine("WaitForSec");
+                }
+
+                else if (doorScript.locked == true && doorScript.keyunlocked == false)
+                {
+                    Debug.Log("DOOR IS LOCKED!");
+                    lockTextObj.SetActive(true);
+                    FindObjectOfType<AudioManager>().Play("DoorOpen");
+                    StartCoroutine("WaitForSec");
+                    anim = hit.transform.GetComponentInParent<Animator>();
+                    anim.SetBool("Opened", false);
+                }
+                else
+                {
+                    Debug.Log("DOOR IS LOCKED!");
+                    lockTextObj.SetActive(true);
+                    FindObjectOfType<AudioManager>().Play("DoorOpen");
+                    StartCoroutine("WaitForSec");
+                    anim = hit.transform.GetComponentInParent<Animator>();
+                    anim.SetBool("Opened", false);
+                }
+            }
+
+            else if (hit.collider.name == door_8.name)
+            {
+                doorScript = door_8.GetComponent<DoorScript>();
+
+                if (doorScript.locked == true && doorScript.keyunlocked == true)
+                {
+                    //This line will get the Animator from  Parent of the door that was hit by the raycast.
+                    anim = hit.transform.GetComponentInParent<Animator>();
+
+                    //This will set the bool the opposite of what it is.
+                    opened = !opened;
+                    //This line will set the bool true so it will play the animation.
+                    anim.SetBool("Opened", opened);
+                    Debug.Log("DOOR OPENED!");
+                    FindObjectOfType<AudioManager>().Play("DoorOpen");
+                    StartCoroutine("WaitForSec");
+                }
+                else if (doorScript.locked == false && doorScript.keyunlocked == false)
+                {
+                    anim = hit.transform.GetComponentInParent<Animator>();
+
+                    //This will set the bool the opposite of what it is.
+                    opened = !opened;
+                    //This line will set the bool true so it will play the animation.
+                    anim.SetBool("Opened", opened);
+                    Debug.Log("DOOR OPNENED!");
+                    FindObjectOfType<AudioManager>().Play("DoorOpen");
+                    StartCoroutine("WaitForSec");
+                }
+
+                else if (doorScript.locked == true && doorScript.keyunlocked == false)
+                {
+                    Debug.Log("DOOR IS LOCKED!");
+                    lockTextObj.SetActive(true);
+                    FindObjectOfType<AudioManager>().Play("DoorOpen");
+                    StartCoroutine("WaitForSec");
+                    anim = hit.transform.GetComponentInParent<Animator>();
+                    anim.SetBool("Opened", false);
+                }
+                else
+                {
+                    Debug.Log("DOOR IS LOCKED!");
+                    lockTextObj.SetActive(true);
+                    FindObjectOfType<AudioManager>().Play("DoorOpen");
+                    StartCoroutine("WaitForSec");
+                    anim = hit.transform.GetComponentInParent<Animator>();
+                    anim.SetBool("Opened", false);
+                }
+            }
+
+            else if (hit.collider.name == door_9.name)
+            {
+                doorScript = door_9.GetComponent<DoorScript>();
+
+                if (doorScript.locked == true && doorScript.keyunlocked == true)
+                {
+                    //This line will get the Animator from  Parent of the door that was hit by the raycast.
+                    anim = hit.transform.GetComponentInParent<Animator>();
+
+                    //This will set the bool the opposite of what it is.
+                    opened = !opened;
+                    //This line will set the bool true so it will play the animation.
+                    anim.SetBool("Opened", opened);
+                    Debug.Log("DOOR OPENED!");
+                    FindObjectOfType<AudioManager>().Play("DoorOpen");
+                    StartCoroutine("WaitForSec");
+                }
+                else if (doorScript.locked == false && doorScript.keyunlocked == false)
+                {
+                    anim = hit.transform.GetComponentInParent<Animator>();
+
+                    //This will set the bool the opposite of what it is.
+                    opened = !opened;
+                    //This line will set the bool true so it will play the animation.
+                    anim.SetBool("Opened", opened);
+                    Debug.Log("DOOR OPNENED!");
+                    FindObjectOfType<AudioManager>().Play("DoorOpen");
+                    StartCoroutine("WaitForSec");
+                }
+
+                else if (doorScript.locked == true && doorScript.keyunlocked == false)
+                {
+                    Debug.Log("DOOR IS LOCKED!");
+                    lockTextObj.SetActive(true);
+                    FindObjectOfType<AudioManager>().Play("DoorOpen");
+                    StartCoroutine("WaitForSec");
+                    anim = hit.transform.GetComponentInParent<Animator>();
+                    anim.SetBool("Opened", false);
+                }
+                else
+                {
+                    Debug.Log("DOOR IS LOCKED!");
+                    lockTextObj.SetActive(true);
+                    FindObjectOfType<AudioManager>().Play("DoorOpen");
+                    StartCoroutine("WaitForSec");
+                    anim = hit.transform.GetComponentInParent<Animator>();
+                    anim.SetBool("Opened", false);
+                }
+            }
+
+            else if (hit.collider.name == door_10.name)
+            {
+                doorScript = door_10.GetComponent<DoorScript>();
+
+                if (doorScript.locked == true && doorScript.keyunlocked == true)
+                {
+                    //This line will get the Animator from  Parent of the door that was hit by the raycast.
+                    anim = hit.transform.GetComponentInParent<Animator>();
+
+                    //This will set the bool the opposite of what it is.
+                    opened = !opened;
+                    //This line will set the bool true so it will play the animation.
+                    anim.SetBool("Opened", opened);
+                    Debug.Log("DOOR OPENED!");
+                    FindObjectOfType<AudioManager>().Play("DoorOpen");
+                    StartCoroutine("WaitForSec");
+                }
+                else if (doorScript.locked == false && doorScript.keyunlocked == false)
+                {
+                    anim = hit.transform.GetComponentInParent<Animator>();
+
+                    //This will set the bool the opposite of what it is.
+                    opened = !opened;
+                    //This line will set the bool true so it will play the animation.
+                    anim.SetBool("Opened", opened);
+                    Debug.Log("DOOR OPNENED!");
+                    FindObjectOfType<AudioManager>().Play("DoorOpen");
+                    StartCoroutine("WaitForSec");
+                }
+
+                else if (doorScript.locked == true && doorScript.keyunlocked == false)
+                {
+                    Debug.Log("DOOR IS LOCKED!");
+                    lockTextObj.SetActive(true);
+                    FindObjectOfType<AudioManager>().Play("DoorOpen");
+                    StartCoroutine("WaitForSec");
+                    anim = hit.transform.GetComponentInParent<Animator>();
+                    anim.SetBool("Opened", false);
+                }
+                else
+                {
+                    Debug.Log("DOOR IS LOCKED!");
+                    lockTextObj.SetActive(true);
+                    FindObjectOfType<AudioManager>().Play("DoorOpen");
+                    StartCoroutine("WaitForSec");
+                    anim = hit.transform.GetComponentInParent<Animator>();
+                    anim.SetBool("Opened", false);
+                }
+            }
 
             if (hit.collider.tag == "Notes")
             {
