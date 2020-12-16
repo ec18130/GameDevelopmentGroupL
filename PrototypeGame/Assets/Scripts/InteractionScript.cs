@@ -32,6 +32,8 @@ public class InteractionScript : MonoBehaviour
 
     public TVeffect tvscript;
 
+    public bool startScare = false;
+
     void Start()
     {
 
@@ -264,6 +266,11 @@ public class InteractionScript : MonoBehaviour
                 FindObjectOfType<AudioManager>().Play("Notes");
                 hit.collider.GetComponent<Notes>().ShowNotes();
                 opened = !opened;
+
+                if (hit.collider.name == "Note3")
+                {
+                    startScare = true;
+                }
             }
             else if (hit.collider.tag == "Elevator")
             {
@@ -289,8 +296,10 @@ public class InteractionScript : MonoBehaviour
             }
             else if (hit.collider.tag == "TV")
             {
+                tvscript.video.Stop();
+                tvscript.source.Stop();
                 tvscript.tvmaterial.DisableKeyword("_EMISSION");
-                tvscript.tvaudio.Stop();
+                tvscript.tvlight.SetActive(false);
             }
         }
     }
