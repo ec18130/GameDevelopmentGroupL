@@ -39,6 +39,9 @@ public class InteractionScript : MonoBehaviour
     public GameObject Battery;
     public GameObject Battery_2;
     public GameObject Battery_3;
+    public GameObject Battery_4;
+    public GameObject Battery_5;
+    public GameObject Battery_6;
     public bool batteryPickup;
     public bool delete;
 
@@ -705,6 +708,27 @@ public class InteractionScript : MonoBehaviour
                 batteryPickup = true;
                 Battery_3.SetActive(false);
             }
+            else if (hit.collider.name == Battery_4.name)
+            {
+                FindObjectOfType<AudioManager>().Play("Batteries");
+                batteryPickup = true;
+                Battery_4.SetActive(false);
+            }
+
+            else if (hit.collider.name == Battery_5.name)
+            {
+                FindObjectOfType<AudioManager>().Play("Batteries");
+                batteryPickup = true;
+                Battery_5.SetActive(false);
+            }
+
+            else if (hit.collider.name == Battery_6.name)
+            {
+                FindObjectOfType<AudioManager>().Play("Batteries");
+                batteryPickup = true;
+                Battery_6.SetActive(false);
+            }
+
 
             else if (hit.collider.tag == "TV")
             {
