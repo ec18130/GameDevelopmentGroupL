@@ -672,6 +672,10 @@ public class InteractionScript : MonoBehaviour
                     GirlTwistJumpScareTrigger.SetActive(true);
                     startScare = true;
                 }
+                if (hit.collider.name == "Note6")
+                {
+                    startScare = true;
+                }
             }
             else if (hit.collider.tag == "Elevator")
             {

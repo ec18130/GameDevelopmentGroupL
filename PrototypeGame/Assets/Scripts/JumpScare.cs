@@ -25,6 +25,8 @@ public class JumpScare : MonoBehaviour
     public GameObject playercamera;
     public GameObject headbob;
 
+    public GameObject finalJumpScare;
+
     public bool isOn = false;
     float flickerDelay;
 
@@ -35,6 +37,7 @@ public class JumpScare : MonoBehaviour
         jumpscare2.SetActive(false);
         jumpscare3.SetActive(false);
         jumpscare4.SetActive(false);
+        finalJumpScare.SetActive(false);
         volume.profile.TryGetSettings(out grain);
         volume.profile.TryGetSettings(out colorGrading);
         volume.profile.TryGetSettings(out lensDistortion);
@@ -85,6 +88,10 @@ public class JumpScare : MonoBehaviour
             interaction.startScare = false;
             grain.enabled.value = true;
         }
+        if (player.tag == "Player" && this.gameObject.name == "EndJumpScare" && interaction.startScare == true && noteImage.activeInHierarchy == false)
+        {
+            StartCoroutine(End());
+        }
     }
 
     IEnumerator DestroyNun()
@@ -132,11 +139,6 @@ public class JumpScare : MonoBehaviour
         this.gameObject.SetActive(false);
     }
 
-    //IEnumerator VisionDisable()
-    //{
-
-    //}
-
     IEnumerator SpookyAudio()
     {
         FindObjectOfType<AudioManager>().Play("JumpScare3");
@@ -147,6 +149,16 @@ public class JumpScare : MonoBehaviour
         isOn = false;
         Destroy(jumpscare4);
         Destroy(this.gameObject);
+    }
+
+    IEnumerator End()
+    {
+        yield return new WaitForSeconds(0.8f);
+        FindObjectOfType<AudioManager>().Play("endscare");
+        finalJumpScare.SetActive(true);
+        player.GetComponent<CharacterController>().enabled = false;
+        playercamera.GetComponent<CameraController>().enabled = false;
+        headbob.GetComponent<HeadBob>().enabled = false;
     }
 }
     
