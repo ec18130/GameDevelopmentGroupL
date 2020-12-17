@@ -4,13 +4,15 @@ using UnityEngine;
 
 public class FlickerLights : MonoBehaviour
 {
-    bool isOn = false;
+    public Material lightMaterialChange;
+    public GameObject lamp;
+    public JumpScare JumpScare;
     float flickerDelay;
 
     // Update is called once per frame
     void Update()
     {
-        if (isOn == true)
+        if (JumpScare.isOn == true)
         {
             StartCoroutine(FlickeringLights());
         }
@@ -18,14 +20,18 @@ public class FlickerLights : MonoBehaviour
 
     IEnumerator FlickeringLights()
     {
-        isOn = true;
         this.gameObject.GetComponent<Light>().enabled = false;
         flickerDelay = Random.Range(0.1f, 0.3f);
         yield return new WaitForSeconds(flickerDelay);
         this.gameObject.GetComponent<Light>().enabled = true;
         flickerDelay = Random.Range(0.1f, 0.3f);
         yield return new WaitForSeconds(flickerDelay);
-        isOn = false;
+
+        if (JumpScare.isOn == false)
+        {
+            lamp.GetComponent<MeshRenderer>().material = lightMaterialChange;
+            Destroy(this.gameObject);
+        }
     }
 }
 

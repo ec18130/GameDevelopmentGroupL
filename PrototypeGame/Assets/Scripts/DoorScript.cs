@@ -7,7 +7,6 @@ public class DoorScript : MonoBehaviour
 {
     public bool keyunlocked = false;
     public bool locked = true;
-    public Text lockText;
     public GameObject unlockTextObj;
 
     void Start()
@@ -26,8 +25,6 @@ public class DoorScript : MonoBehaviour
             keyunlocked = true;
             unlockTextObj.SetActive(true);
             StartCoroutine("WaitForSec");
-
-
         }
     }
     IEnumerator WaitForSec()

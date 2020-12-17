@@ -11,6 +11,8 @@ public class Notes : MonoBehaviour
     public GameObject headbob;
     public GameObject closeButton;
 
+    public bool beginJumpscare = false;
+
 
     // Start is called before the first frame update
     void Start()

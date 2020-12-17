@@ -17,6 +17,7 @@ TagManager:
   - ElevatorLock
   - Battery
   - TV
+  - DoubleDoor
   layers:
   - Default
   - TransparentFX
