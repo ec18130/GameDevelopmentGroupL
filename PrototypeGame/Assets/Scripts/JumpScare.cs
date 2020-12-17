@@ -98,7 +98,8 @@ public class JumpScare : MonoBehaviour
     IEnumerator DestroyNun()
     {
         FindObjectOfType<AudioManager>().Play("JumpScare1");
-        yield return new WaitForSeconds(0.7f);
+        jumpscare2.SetActive(true);
+        yield return new WaitForSeconds(1.2f);
         Destroy(jumpscare2);
         Destroy(this.gameObject);
     }
