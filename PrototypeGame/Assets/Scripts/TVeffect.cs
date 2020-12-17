@@ -12,9 +12,9 @@ public class TVeffect : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
+        tvlight.SetActive(true);
         video.Play();
         source.Play();
-        tvlight.SetActive(true);
         tvmaterial.EnableKeyword("_EMISSION");
         Destroy(this.gameObject);
     }
