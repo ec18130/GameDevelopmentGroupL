@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine.Rendering.PostProcessing;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class JumpScare : MonoBehaviour
 {
@@ -159,6 +160,8 @@ public class JumpScare : MonoBehaviour
         player.GetComponent<CharacterController>().enabled = false;
         playercamera.GetComponent<CameraController>().enabled = false;
         headbob.GetComponent<HeadBob>().enabled = false;
+        yield return new WaitForSeconds(2f);
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
     }
 }
     
