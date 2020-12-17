@@ -47,6 +47,7 @@ public class InteractionScript : MonoBehaviour
 
     void Update()
     {
+        
         //This will tell if the player press E on the Keyboard. P.S. You can change the key if you want.
         if (Input.GetKeyDown(KeyCode.E))
         {
