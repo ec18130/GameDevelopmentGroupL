@@ -6,6 +6,7 @@ using UnityEngine;
 public class JumpScare : MonoBehaviour
 {
     public Animator[] door;
+    public GameObject jumpscare;
     public GameObject jumpscare2;
     public GameObject jumpscare3;
     public GameObject jumpscare4;
@@ -20,12 +21,17 @@ public class JumpScare : MonoBehaviour
     private ColorGrading colorGrading = null;
     private LensDistortion lensDistortion = null;
 
+    public GameObject player;
+    public GameObject playercamera;
+    public GameObject headbob;
+
     public bool isOn = false;
     float flickerDelay;
 
     // Start is called before the first frame update
     void Start()
     {
+        jumpscare.SetActive(false);
         jumpscare2.SetActive(false);
         jumpscare3.SetActive(false);
         jumpscare4.SetActive(false);
@@ -63,8 +69,8 @@ public class JumpScare : MonoBehaviour
 
         if (player.tag == "Player" && this.gameObject.name == "NunCorridorJumpscareTrigger")
         {
-            StartCoroutine(VisionDisable());
             StartCoroutine(NunJumpscare2());
+            //StartCoroutine(VisionDisable());
         }
 
         if (player.tag == "Player" && this.gameObject.name == "LightFlickerTrigger")
@@ -72,38 +78,64 @@ public class JumpScare : MonoBehaviour
             isOn = true;
             StartCoroutine(SpookyAudio());
         }
+
+        if (player.tag == "Player" && this.gameObject.name == "GirlTwistJumpScareTrigger" && interaction.startScare == true && noteImage.activeInHierarchy == false)
+        {
+            StartCoroutine(GirlJumpscare());
+            interaction.startScare = false;
+            grain.enabled.value = true;
+        }
     }
 
     IEnumerator DestroyNun()
     {
         FindObjectOfType<AudioManager>().Play("JumpScare1");
-        jumpscare2.SetActive(true);
         yield return new WaitForSeconds(0.7f);
         Destroy(jumpscare2);
         Destroy(this.gameObject);
     }
 
+    IEnumerator GirlJumpscare()
+    {
+        FindObjectOfType<AudioManager>().Play("necktwist"); 
+        player.GetComponent<CharacterController>().enabled = false;
+        playercamera.GetComponent<CameraController>().enabled = false;
+        headbob.GetComponent<HeadBob>().enabled = false;
+        jumpscare.SetActive(true);
+        jumpscareAnimator = jumpscare.GetComponent<Animator>();
+        jumpscareAnimator.SetBool("Opened", true);
+        yield return new WaitForSeconds(7f);
+        FindObjectOfType<AudioManager>().Play("heartbeat");
+        jumpscare.SetActive(false);
+        player.GetComponent<CharacterController>().enabled = true;
+        playercamera.GetComponent<CameraController>().enabled = true;
+        headbob.GetComponent<HeadBob>().enabled = true;
+        Destroy(this.gameObject);
+    }
+
     IEnumerator NunJumpscare2()
     {
+        this.gameObject.GetComponent<Collider>().enabled = false;
         FindObjectOfType<AudioManager>().Play("JumpScare2");
+        grain.enabled.value = true;
+        lensDistortion.enabled.value = true;
+        colorGrading.enabled.value = true;
         jumpscare3.SetActive(true);
         jumpscareAnimator = jumpscare3.GetComponent<Animator>();
         jumpscareAnimator.SetBool("Opened", true);
         yield return new WaitForSeconds(1.01f);
-        Destroy(jumpscare3);
-    }
-
-    IEnumerator VisionDisable()
-    {
-        grain.enabled.value = true;
-        lensDistortion.enabled.value = true;
-        colorGrading.enabled.value = true;
+        jumpscare3.SetActive(false);
         yield return new WaitForSeconds(10);
         grain.enabled.value = false;
         lensDistortion.enabled.value = false;
         colorGrading.enabled.value = false;
         this.gameObject.SetActive(false);
     }
+
+    //IEnumerator VisionDisable()
+    //{
+
+    //}
 
     IEnumerator SpookyAudio()
     {

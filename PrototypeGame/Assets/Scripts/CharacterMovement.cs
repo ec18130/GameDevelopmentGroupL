@@ -23,10 +23,13 @@ public class CharacterMovement : MonoBehaviour
 
     private float maxBattery;
     private float currentBattery;
-    private int batteries;
+    private int batteries = 1;
     private float usedBattery;
 
+    public Text Batterytext;
 
+    [SerializeField]
+    private int FlashlightOffDuration;
 
     // Start is called before the first frame update
     void Start()
@@ -39,10 +42,13 @@ public class CharacterMovement : MonoBehaviour
     void Update()
     {
         maxBattery = 50 * batteries;
-        currentBattery = maxBattery;
+        currentBattery = maxBattery - usedBattery;
+
+        int value = (int)Mathf.Round(currentBattery);
+
+        Batterytext.text = "Flashlight: " + value.ToString() + "%";
 
         print("battery used: " + usedBattery);
-        print("battery current: " + currentBattery);
 
         isGrounded = Physics.CheckSphere(checkFloor.position, floorDistance, floorMask);
 
@@ -75,24 +81,28 @@ public class CharacterMovement : MonoBehaviour
             if (currentBattery <= 0)
             {
                 Light.SetActive(false);
+                FlashlightOffDuration++;
                 batteries = 0;
             }
             else if (currentBattery > 0)
             {
                 Light.SetActive(true);
-                currentBattery -= 0.5f * Time.deltaTime;
-                usedBattery += 0.5f * Time.deltaTime;
+                currentBattery -= 0.25f * Time.deltaTime;
+                usedBattery += 0.25f * Time.deltaTime;
+                FlashlightOffDuration--;
             }
             if (usedBattery >= 50)
             {
                 batteries -= 1;
                 usedBattery = 0;
+                FlashlightOffDuration--;
             }
         }
         else if (lightState == false)
         {
             Light.SetActive(false);
             Debug.Log("Flash Light off!");
+            FlashlightOffDuration++;
         }
 
         if (Input.GetKeyDown(KeyCode.E))
